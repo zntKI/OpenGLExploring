@@ -2,6 +2,72 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+static unsigned int compileShader( unsigned int type, const std::string& source )
+{
+	// Creates the shader and returns its memory address
+	unsigned int id = glCreateShader( type );
+
+	// Copy source into a local variable to prevent original variable going out of scope and us ending up trying to access invalid memory
+	std::string srcStr = source;
+	// Get the memory location of the first character of the string
+	const char* src = srcStr.c_str();
+	// Sets the source of the shader by passing by location of the first character and nullptr for null-terminated string to instrunct to go the end of the source
+	glShaderSource( id, 1, &src, nullptr );
+	// Compiles the shader
+	glCompileShader( id );
+
+	// Get the result of the compilation process
+	int result;
+	glGetShaderiv( id, GL_COMPILE_STATUS, &result );
+	if ( result == GL_FALSE ) // If it has failed
+	{
+		// Get the length of the error message
+		int length;
+		glGetShaderiv( id, GL_INFO_LOG_LENGTH, &length );
+		// Dynamically allocate a char array on the stack and then pass it to retrieve the error message
+		char* message = ( char* ) _malloca( length * sizeof( char ) );
+		glGetShaderInfoLog( id, length, &length, message );
+
+		// Log type of shader and error message
+		std::cout << "Failed to compile " <<
+			( type == GL_VERTEX_SHADER ? "vertex" : "fragment" )
+			<< " shader!" << std::endl;
+		std::cout << message << std::endl;
+
+		// Frees memory - opposite of glCreateShader()
+		glDeleteShader( id );
+
+		return 0;
+	}
+
+	return id;
+}
+
+static unsigned int createShader( const std::string& vertexShader, const std::string& fragmentShader )
+{
+	// Creates a program for shaders to be attatched to
+	unsigned int program = glCreateProgram();
+
+	// Compile the actual shaders from the source code we provided
+	unsigned int vs = compileShader( GL_VERTEX_SHADER, vertexShader );
+	unsigned int fs = compileShader( GL_FRAGMENT_SHADER, fragmentShader );
+
+	// For following code, check the docs for more details:
+	// 
+	// Attaches shaders to the program
+	glAttachShader( program, vs );
+	glAttachShader( program, fs );
+	// Links and validates program
+	glLinkProgram( program );
+	glValidateProgram( program );
+
+	// Frees memory after having attatched shaders to a program - opposite of glCreateShader()
+	glDeleteShader( vs );
+	glDeleteShader( fs );
+
+	return program;
+}
+
 int main( void )
 {
 	GLFWwindow* window;
@@ -68,6 +134,32 @@ int main( void )
 	// Instruct OpenGL to enable an attribute of given index from a vertex from a currently bound buffer
 	glEnableVertexAttribArray( 0 );
 
+
+	// Define shaders (BAD way)
+	const std::string vs = R"glsl(
+#version 330 core
+
+layout(location = 0) in vec4 position;
+
+void main(){
+   gl_Position = position;
+}
+)glsl";
+	const std::string fs = R"glsl(
+#version 330 core
+
+out vec4 color;
+
+void main(){
+   color = vec4(1.0, 1.0, 0.0, 1.0);
+}
+)glsl";
+
+	// Create(compile) the shaders we defined and get back the program id to which the shaders have been attached
+	unsigned int shader = createShader( vs, fs );
+	// BIND(select) the shader program for OpenGL to use
+	glUseProgram( shader );
+
 	/* Loop until the user closes the window */
 	while ( !glfwWindowShouldClose( window ) )
 	{
@@ -82,6 +174,9 @@ int main( void )
 		/* Poll for and process events */
 		glfwPollEvents();
 	}
+
+	// Free memory - opposite of glCreateProgram()
+	glDeleteProgram( shader );
 
 	glfwTerminate();
 	return 0;
