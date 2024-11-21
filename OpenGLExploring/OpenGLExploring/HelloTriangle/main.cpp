@@ -96,11 +96,17 @@ int main( void )
 	std::cout << glGetString( GL_VERSION ) << std::endl;
 
 	// Vertices
-	float positions[ 6 ] = {
+	float positions[] = {
 		//	  x		 y
 			-0.5f, -0.5f, // Vertex 01
 			 0.5f, -0.5f, // Vertex 02
-			 0.0f,  0.5f  // Vertex 03
+			 0.5f,  0.5f,  // Vertex 03
+			-0.5f,  0.5f  // Vertex 04
+	};
+
+	unsigned int indices[] = {
+		0, 1, 2,
+		2, 3, 0
 	};
 
 	// Insruct OpenGL to generate 1 buffer in the VRAM
@@ -120,7 +126,7 @@ int main( void )
 	// USAGE: with this we give a hint to OpenGL how to deal with that data:
 	//		  Providing GL_STATIC_DRAW instructs that we have the intention of setting the data only once and then only reading it;
 	//		  However, that does not mean that if we should modify it later on, we are forbidden to do so; no - we can, but it may be slower due to the way we have instructed OpenGL to interpret that data initially
-	glBufferData( GL_ARRAY_BUFFER, 6 * sizeof( float ), positions, GL_STATIC_DRAW );
+	glBufferData( GL_ARRAY_BUFFER, 8 * sizeof( float ), positions, GL_STATIC_DRAW );
 
 	// Instruct OpenGL to define an attribute from a vertex from the currently bound buffer so that we can later utilize it in our shader
 	// A Vertex is comprised of Attributes. An example of attributes could be 'Position', 'Color', 'Normal', etc.
@@ -133,6 +139,13 @@ int main( void )
 	glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, sizeof( float ) * 2, 0 );
 	// Instruct OpenGL to enable an attribute of given index from a vertex from a currently bound buffer
 	glEnableVertexAttribArray( 0 );
+
+
+	// Index buffer:
+	unsigned int ibo;
+	glGenBuffers( 1, &ibo );
+	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, ibo );
+	glBufferData( GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof( unsigned int ), indices, GL_STATIC_DRAW );
 
 
 	// Define shaders (BAD way)
@@ -166,6 +179,7 @@ void main(){
 		/* Render here */
 		glClear( GL_COLOR_BUFFER_BIT );
 
+		glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr );
 		glDrawArrays( GL_TRIANGLES, 0, 3 );
 
 		/* Swap front and back buffers */
