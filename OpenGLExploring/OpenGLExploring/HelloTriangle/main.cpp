@@ -142,7 +142,7 @@ int main( void )
 	//
 	// INDEX: the index which we will then use to access this attribute in our shader
 	// SIZE: the count of elements in that attribute: 1, 2, 3 or 4 - in case of 'Position', it is 2 since it is a vec2
-	// STRIDE: the actual byte size of that attribute
+	// STRIDE: the byte size distance to the start of the same attribute in the next vertex
 	// POINTER: the position in bytes of that attribute inside the vertex
 	//			Example: if after 'xy-pos' attribute we have another attribute that is 'color' for ex, the position of the 'color' attribute would be '8' since we would have to jump 2 * 'float_size' amount of space in memory to get there
 	glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, sizeof( float ) * 2, 0 );
