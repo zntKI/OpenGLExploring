@@ -62,7 +62,7 @@ int main( void )
 	int tWidth, tHeight, tNrChannels;
 
 	stbi_set_flip_vertically_on_load( true );
-	unsigned char* data = stbi_load( "Transformations/container.jpg", &tWidth, &tHeight,
+	unsigned char* data = stbi_load( "Assets/Images/container.jpg", &tWidth, &tHeight,
 		&tNrChannels, 0 );
 
 	if ( data )
@@ -88,7 +88,7 @@ int main( void )
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
-	data = stbi_load( "Transformations/awesomeface.png", &tWidth, &tHeight,
+	data = stbi_load( "Assets/Images/awesomeface.png", &tWidth, &tHeight,
 		&tNrChannels, 0 );
 
 	if ( data )
