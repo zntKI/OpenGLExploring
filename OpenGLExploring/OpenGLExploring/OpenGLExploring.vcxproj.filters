@@ -33,6 +33,9 @@
     <ClCompile Include="Transformations\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CoordSystems\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -46,5 +49,7 @@
     <None Include="Textures\vertexShader.glsl" />
     <None Include="Transformations\fragmentShader.glsl" />
     <None Include="Transformations\vertexShader.glsl" />
+    <None Include="CoordSystems\vertexShader.glsl" />
+    <None Include="CoordSystems\fragmentShader.glsl" />
   </ItemGroup>
 </Project>
