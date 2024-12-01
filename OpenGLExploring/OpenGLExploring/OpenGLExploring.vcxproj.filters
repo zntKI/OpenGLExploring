@@ -30,6 +30,9 @@
     <ClCompile Include="stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Transformations\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -41,5 +44,7 @@
     <None Include="Shaders\fragmentShader.glsl" />
     <None Include="Textures\fragmentShader.glsl" />
     <None Include="Textures\vertexShader.glsl" />
+    <None Include="Transformations\fragmentShader.glsl" />
+    <None Include="Transformations\vertexShader.glsl" />
   </ItemGroup>
 </Project>
