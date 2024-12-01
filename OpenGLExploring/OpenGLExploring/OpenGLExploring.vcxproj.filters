@@ -21,17 +21,25 @@
     <ClCompile Include="HelloTriangle\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shaders\shader.cpp">
+    <ClCompile Include="shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shaders\shader.hpp">
+    <ClInclude Include="shader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\vertexShader.glsl" />
     <None Include="Shaders\fragmentShader.glsl" />
+    <None Include="Textures\fragmentShader.glsl" />
+    <None Include="Textures\vertexShader.glsl" />
   </ItemGroup>
 </Project>

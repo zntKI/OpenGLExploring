@@ -1,7 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include "shader.hpp"
+#include "../shader.hpp"
 
 // TODO: make the colors rotate around the corners of the triangle
 

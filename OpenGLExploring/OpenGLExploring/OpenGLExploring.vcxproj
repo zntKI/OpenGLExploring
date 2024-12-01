@@ -21,14 +21,18 @@
   <ItemGroup>
     <ClCompile Include="HelloTriangle\main.cpp" />
     <ClCompile Include="Shaders\main.cpp" />
-    <ClCompile Include="Shaders\shader.cpp" />
+    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="Textures\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shaders\shader.hpp" />
+    <ClInclude Include="shader.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\fragmentShader.glsl" />
     <None Include="Shaders\vertexShader.glsl" />
+    <None Include="Textures\fragmentShader.glsl" />
+    <None Include="Textures\vertexShader.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -85,13 +89,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\bin\</OutDir>
     <IntDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\Intermediate\</IntDir>
-    <IncludePath>$(SolutionDir)dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)dependencies\GLEW\lib;$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\bin\</OutDir>
     <IntDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\Intermediate\</IntDir>
-    <IncludePath>$(SolutionDir)dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)dependencies\GLEW\lib;$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
