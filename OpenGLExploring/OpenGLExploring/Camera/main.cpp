@@ -353,7 +353,12 @@ void processInput( GLFWwindow* window )
 		glfwSetWindowShouldClose( window, true );
 	}
 
-	const float cameraSpeed = 2.5f * deltaTime;
+	float cameraSpeed = 2.5f * deltaTime;
+
+	if ( glfwGetKey( window, GLFW_KEY_LEFT_SHIFT ) == GLFW_PRESS )
+	{
+		cameraSpeed *= 2.f;
+	}
 
 	glm::vec3 tempMoveVec( 0.f, 0.f, 0.f );
 	if ( glfwGetKey( window, GLFW_KEY_W ) == GLFW_PRESS )
@@ -371,6 +376,16 @@ void processInput( GLFWwindow* window )
 	if ( glfwGetKey( window, GLFW_KEY_D ) == GLFW_PRESS )
 	{
 		tempMoveVec += glm::cross( cameraFront, cameraUp );
+	}
+	if ( glfwGetKey( window, GLFW_KEY_E ) == GLFW_PRESS ) // UP
+	{
+		glm::vec3 realCameraUp = glm::cross( glm::cross( cameraFront, cameraUp ), cameraFront );
+		tempMoveVec += realCameraUp;
+	}
+	if ( glfwGetKey( window, GLFW_KEY_Q ) == GLFW_PRESS ) // DOWN
+	{
+		glm::vec3 realCameraUp = glm::cross( cameraFront, glm::cross( cameraFront, cameraUp ) ); // reversed
+		tempMoveVec += realCameraUp;
 	}
 
 	if ( glm::length( tempMoveVec ) > 0.001f )
