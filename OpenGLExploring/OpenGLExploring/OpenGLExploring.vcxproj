@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera\main.cpp" />
     <ClCompile Include="CoordSystems\main.cpp" />
     <ClCompile Include="HelloTriangle\main.cpp" />
     <ClCompile Include="Shaders\main.cpp" />
@@ -31,6 +32,8 @@
     <ClInclude Include="shader.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Camera\fragmentShader.glsl" />
+    <None Include="Camera\vertexShader.glsl" />
     <None Include="CoordSystems\fragmentShader.glsl" />
     <None Include="CoordSystems\vertexShader.glsl" />
     <None Include="Shaders\fragmentShader.glsl" />
