@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="Camera\main.cpp" />
     <ClCompile Include="CoordSystems\main.cpp" />
     <ClCompile Include="HelloTriangle\main.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="Transformations\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.hpp" />
     <ClInclude Include="shader.hpp" />
   </ItemGroup>
   <ItemGroup>

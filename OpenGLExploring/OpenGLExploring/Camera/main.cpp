@@ -9,9 +9,10 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "../shader.hpp"
+#include "../camera.hpp"
 
 void scrollCallback( GLFWwindow* window, double xpos, double ypos );
-void mouseCallback( GLFWwindow* window, double xpos, double ypos );
+void mouseCallback( GLFWwindow* window, double xposIn, double yposIn );
 void processInput( GLFWwindow* window );
 
 const unsigned int windowWidth = 1920, windowHeight = 1080;
@@ -20,14 +21,8 @@ float deltaTime = 0.0f; // Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
 
 // Camera vars
-glm::vec3 cameraPos = glm::vec3( 0.f, 0.f, 3.f );
-glm::vec3 cameraFront = glm::vec3( 0.f, 0.f, -1.f );
-glm::vec3 cameraUp = glm::vec3( 0.f, 1.f, 0.f );
-float fov = 45.f;
-
-// Mouse vars
+Camera camera( glm::vec3( 0.f, 0.f, 3.f ) );
 bool firstMouse = true;
-float pitch = 0.f, yaw = -90.f;
 float lastX = windowWidth / 2.f, lastY = windowHeight / 2.f;
 
 int main( void )
@@ -276,13 +271,13 @@ glm::vec3( -1.3f, 1.0f, -1.5f )
 		}
 
 		// View matrix
-		glm::mat4 view = glm::lookAt( cameraPos, cameraPos + cameraFront, cameraUp );
+		glm::mat4 view = camera.GetViewMatrix();
 		ourShader.setMatrix4( "view", view );
 
 		// Projection matrix
 		int screenWidth, screenHeight;
 		glfwGetWindowSize( window, &screenWidth, &screenHeight );
-		glm::mat4 projection = glm::perspective( glm::radians( fov ), screenWidth / ( float ) screenHeight, .1f, 100.f );
+		glm::mat4 projection = glm::perspective( glm::radians( camera.Zoom ), screenWidth / ( float ) screenHeight, .1f, 100.f );
 		ourShader.setMatrix4( "projection", projection );
 
 		/* Swap front and back buffers */
@@ -298,19 +293,14 @@ glm::vec3( -1.3f, 1.0f, -1.5f )
 
 void scrollCallback( GLFWwindow* window, double xpos, double ypos )
 {
-	fov -= ( float ) ypos;
-	if ( fov < 1.f )
-	{
-		fov = 1.f;
-	}
-	if ( fov > 45.f )
-	{
-		fov = 45.f;
-	}
+	camera.ProcessMouseScroll( static_cast< float >( ypos ) );
 }
 
-void mouseCallback( GLFWwindow* window, double xpos, double ypos )
+void mouseCallback( GLFWwindow* window, double xposIn, double yposIn )
 {
+	float xpos = static_cast< float >( xposIn );
+	float ypos = static_cast< float >( yposIn );
+
 	if ( firstMouse ) // initially set to true
 	{
 		lastX = xpos;
@@ -323,27 +313,7 @@ void mouseCallback( GLFWwindow* window, double xpos, double ypos )
 	lastX = xpos;
 	lastY = ypos;
 
-	const float sensitivity = .3f;
-	xoffset *= sensitivity;
-	yoffset *= sensitivity;
-
-	yaw += xoffset;
-	pitch += yoffset;
-
-	if ( pitch > 89.f )
-	{
-		pitch = 89.f;
-	}
-	if ( pitch < -89.f )
-	{
-		pitch = -89.f;
-	}
-
-	glm::vec3 direction;
-	direction.x = cos( glm::radians( yaw ) ) * cos( glm::radians( pitch ) );
-	direction.y = sin( glm::radians( pitch ) );
-	direction.z = sin( glm::radians( yaw ) ) * cos( glm::radians( pitch ) );
-	cameraFront = glm::normalize( direction );
+	camera.ProcessMouseMovement( xoffset, yoffset );
 }
 
 void processInput( GLFWwindow* window )
@@ -353,44 +323,21 @@ void processInput( GLFWwindow* window )
 		glfwSetWindowShouldClose( window, true );
 	}
 
-	float cameraSpeed = 2.5f * deltaTime;
-
 	if ( glfwGetKey( window, GLFW_KEY_LEFT_SHIFT ) == GLFW_PRESS )
-	{
-		cameraSpeed *= 2.f;
-	}
+		camera.ProcessKeyboard( MOVE_FAST, deltaTime );
+	else
+		camera.ProcessKeyboard( SLOW_DOWN, deltaTime );
 
-	glm::vec3 tempMoveVec( 0.f, 0.f, 0.f );
 	if ( glfwGetKey( window, GLFW_KEY_W ) == GLFW_PRESS )
-	{
-		tempMoveVec += cameraFront;
-	}
+		camera.ProcessKeyboard( FORWARD, deltaTime );
 	if ( glfwGetKey( window, GLFW_KEY_S ) == GLFW_PRESS )
-	{
-		tempMoveVec -= cameraFront;
-	}
+		camera.ProcessKeyboard( BACKWARD, deltaTime );
 	if ( glfwGetKey( window, GLFW_KEY_A ) == GLFW_PRESS )
-	{
-		tempMoveVec -= glm::cross( cameraFront, cameraUp );
-	}
+		camera.ProcessKeyboard( LEFT, deltaTime );
 	if ( glfwGetKey( window, GLFW_KEY_D ) == GLFW_PRESS )
-	{
-		tempMoveVec += glm::cross( cameraFront, cameraUp );
-	}
-	if ( glfwGetKey( window, GLFW_KEY_E ) == GLFW_PRESS ) // UP
-	{
-		glm::vec3 realCameraUp = glm::cross( glm::cross( cameraFront, cameraUp ), cameraFront );
-		tempMoveVec += realCameraUp;
-	}
-	if ( glfwGetKey( window, GLFW_KEY_Q ) == GLFW_PRESS ) // DOWN
-	{
-		glm::vec3 realCameraUp = glm::cross( cameraFront, glm::cross( cameraFront, cameraUp ) ); // reversed
-		tempMoveVec += realCameraUp;
-	}
-
-	if ( glm::length( tempMoveVec ) > 0.001f )
-	{
-		glm::vec3 vecToAdd = glm::normalize( tempMoveVec ) * cameraSpeed;
-		cameraPos += vecToAdd;
-	}
+		camera.ProcessKeyboard( RIGHT, deltaTime );
+	if ( glfwGetKey( window, GLFW_KEY_E ) == GLFW_PRESS )
+		camera.ProcessKeyboard( UP, deltaTime );
+	if ( glfwGetKey( window, GLFW_KEY_Q ) == GLFW_PRESS )
+		camera.ProcessKeyboard( DOWN, deltaTime );
 }
