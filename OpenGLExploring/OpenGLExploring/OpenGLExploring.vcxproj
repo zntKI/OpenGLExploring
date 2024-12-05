@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BasicADSLighting\main.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="Camera\main.cpp" />
     <ClCompile Include="CoordSystems\main.cpp" />
@@ -34,6 +35,8 @@
     <ClInclude Include="shader.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="BasicADSLighting\fragmentShader.glsl" />
+    <None Include="BasicADSLighting\vertexShader.glsl" />
     <None Include="Camera\fragmentShader.glsl" />
     <None Include="Camera\vertexShader.glsl" />
     <None Include="CoordSystems\fragmentShader.glsl" />
