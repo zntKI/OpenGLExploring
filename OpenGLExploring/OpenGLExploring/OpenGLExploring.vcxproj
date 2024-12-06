@@ -35,8 +35,10 @@
     <ClInclude Include="shader.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BasicADSLighting\fragmentShader.glsl" />
-    <None Include="BasicADSLighting\vertexShader.glsl" />
+    <None Include="BasicADSLighting\Shaders\fragmentShader.glsl" />
+    <None Include="BasicADSLighting\Shaders\lightFragmentShader.glsl" />
+    <None Include="BasicADSLighting\Shaders\lightVertexShader.glsl" />
+    <None Include="BasicADSLighting\Shaders\vertexShader.glsl" />
     <None Include="Camera\fragmentShader.glsl" />
     <None Include="Camera\vertexShader.glsl" />
     <None Include="CoordSystems\fragmentShader.glsl" />

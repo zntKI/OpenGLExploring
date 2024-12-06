@@ -27,7 +27,11 @@ Camera camera( glm::vec3( 0.f, 0.f, 3.f ) );
 bool firstMouse = true;
 float lastX = windowWidth / 2.f, lastY = windowHeight / 2.f;
 
-int main() {
+// light position
+glm::vec3 lightPos( 1.2f, 1.f, 2.f );
+
+int main()
+{
 
 #pragma region SetUp
 
@@ -161,10 +165,7 @@ int main() {
 -0.5f, 0.5f, -0.5f, 0.0f, 1.0f
 	};
 
-	glm::vec3 cubePositions[] = {
-glm::vec3( 0.0f, 0.0f, 0.0f ),
-glm::vec3( 2.0f, 5.0f, -15.0f )
-	};
+	glm::vec3 cubePosition( 0.0f, 0.0f, 0.0f );
 
 
 	unsigned int VAO;
@@ -183,15 +184,30 @@ glm::vec3( 2.0f, 5.0f, -15.0f )
 	glVertexAttribPointer( 2, 2, GL_FLOAT, GL_FALSE, sizeof( float ) * 5, ( void* ) ( sizeof( float ) * 3 ) );
 	glEnableVertexAttribArray( 2 );
 
+
+	// light source
+	unsigned int lightVAO;
+	glGenVertexArrays( 1, &lightVAO );
+	glBindVertexArray( lightVAO );
+
+	glBindBuffer( GL_ARRAY_BUFFER, VBO );
+
+	glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, sizeof( float ) * 5, ( void* ) 0 );
+	glEnableVertexAttribArray( 0 );
+
 #pragma endregion
 
 #pragma region ShaderGen
 
-	Shader ourShader( "BasicADSLighting/vertexShader.glsl", "BasicADSLighting/fragmentShader.glsl" );
+	// object shader
+	Shader objectShader( "BasicADSLighting/Shaders/vertexShader.glsl", "BasicADSLighting/Shaders/fragmentShader.glsl" );
 
-	ourShader.use();
-	ourShader.setInt( "texture1", 0 );
-	ourShader.setInt( "texture2", 1 );
+	objectShader.setVec3( "objectColor", glm::vec3( 1.f, .5f, .31f ) );
+	objectShader.setVec3( "lightColor", glm::vec3( 1.f, 1.f, 1.f ) );
+
+
+	// light shader
+	Shader lightShader( "BasicADSLighting/Shaders/lightVertexShader.glsl", "BasicADSLighting/Shaders/lightFragmentShader.glsl" );
 
 #pragma endregion
 
@@ -222,31 +238,71 @@ glm::vec3( 2.0f, 5.0f, -15.0f )
 
 
 		// Rendering
-		glBindVertexArray( VAO );
 
-		// Model displacement
-		for ( unsigned int i = 0; i < 2; i++ )
-		{
-			glm::mat4 model = glm::mat4( 1.f );
-			model = glm::translate( model, cubePositions[ i ] );
-			float angle = 20.f * i;
-			model = glm::rotate( model, glm::radians( angle ), glm::vec3( 1.f, .3f, .5f ) );
+		// Common Transformations
 
-			ourShader.setMatrix4( "model", model );
+#pragma region DefiningMatrices
 
-			glDrawArrays( GL_TRIANGLES, 0, 36 );
-		}
-
+		// Model matrix
+		glm::mat4 model = glm::mat4( 1.f );
 		// View matrix
 		glm::mat4 view = camera.GetViewMatrix();
-		ourShader.setMatrix4( "view", view );
-
 		// Projection matrix
 		int screenWidth, screenHeight;
 		glfwGetWindowSize( window, &screenWidth, &screenHeight );
 		glm::mat4 projection = glm::perspective( glm::radians( camera.Zoom ), screenWidth / ( float ) screenHeight, .1f, 100.f );
-		ourShader.setMatrix4( "projection", projection );
 
+#pragma endregion
+
+
+#pragma region ObjectProcessing
+
+		// Bind the shader for objects
+		objectShader.use();
+
+		// Model displacement
+		model = glm::mat4( 1.f );
+		model = glm::translate( model, cubePosition );
+		objectShader.setMatrix4( "model", model );
+
+		// Set View matrix
+		objectShader.setMatrix4( "view", view );
+
+		// Set Projection matrix
+		objectShader.setMatrix4( "projection", projection );
+
+		// Bind VAO for objects
+		glBindVertexArray( VAO );
+
+		glDrawArrays( GL_TRIANGLES, 0, 36 );
+
+#pragma endregion
+
+#pragma region LightProcessing
+
+		// Bind the shader for objects
+		lightShader.use();
+
+		// Model displacement
+		model = glm::mat4( 1.f );
+		model = glm::translate( model, lightPos );
+		model = glm::scale( model, glm::vec3( .2f ) );
+		lightShader.setMatrix4( "model", model );
+
+		// Set View matrix
+		lightShader.setMatrix4( "view", view );
+
+		// Set Projection matrix
+		lightShader.setMatrix4( "projection", projection );
+
+		// Bind VAO for objects
+		glBindVertexArray( lightVAO );
+
+		glDrawArrays( GL_TRIANGLES, 0, 36 );
+
+#pragma endregion
+		
+		
 		/* Swap front and back buffers */
 		glfwSwapBuffers( window );
 
