@@ -1,7 +1,7 @@
 #version 330 core
 
-out vec4 outColor;
+out vec4 o_color;
 
 void main() {
-   outColor = vec4(1.0);
+   o_color = vec4(1.0);
 }

@@ -127,42 +127,55 @@ int main()
 #pragma region ObjectGen
 
 	float vertices[] = {
--0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
-0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
--0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
--0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
--0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
-0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
--0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
--0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
--0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
--0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
--0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
--0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
--0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
--0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
--0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
-0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
--0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
--0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
--0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
-0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
--0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
--0.5f, 0.5f, -0.5f, 0.0f, 1.0f
+		// positions          // normals          // tex coords
+
+		// Front face
+	   -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 1.0f, 0.0f,
+		0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 1.0f, 1.0f,
+		0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 1.0f, 1.0f,
+	   -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 0.0f, 1.0f,
+	   -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 0.0f, 0.0f,
+
+	   // Back face
+	  -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 0.0f, 0.0f,
+	   0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 1.0f, 0.0f,
+	   0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 1.0f, 1.0f,
+	   0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 1.0f, 1.0f,
+	  -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 0.0f, 1.0f,
+	  -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 0.0f, 0.0f,
+
+	  // Left face
+	 -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f, 1.0f, 0.0f,
+	 -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f, 1.0f, 1.0f,
+	 -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f, 0.0f, 1.0f,
+	 -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f, 0.0f, 1.0f,
+	 -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f, 0.0f, 0.0f,
+	 -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f, 1.0f, 0.0f,
+
+	 // Right face
+	 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f, 1.0f, 0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 1.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 0.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 0.0f, 1.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f, 0.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f, 1.0f, 0.0f,
+
+	 // Down face
+	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f, 0.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f, 1.0f, 1.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f, 1.0f, 0.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f, 1.0f, 0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f, 0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f, 0.0f, 1.0f,
+
+	// Up face
+   -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f, 0.0f, 1.0f,
+	0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f, 1.0f, 1.0f,
+	0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f, 1.0f, 0.0f,
+	0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f, 1.0f, 0.0f,
+   -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f, 0.0f, 0.0f,
+   -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f, 0.0f, 1.0f
 	};
 
 	glm::vec3 cubePosition( 0.0f, 0.0f, 0.0f );
@@ -178,10 +191,13 @@ int main()
 	glBufferData( GL_ARRAY_BUFFER, sizeof( vertices ), vertices, GL_STATIC_DRAW );
 
 	// position
-	glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, sizeof( float ) * 5, ( void* ) 0 );
+	glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, sizeof( float ) * 8, ( void* ) 0 );
 	glEnableVertexAttribArray( 0 );
+	// normals
+	glVertexAttribPointer( 1, 3, GL_FLOAT, GL_FALSE, sizeof( float ) * 8, ( void* ) ( sizeof( float ) * 3 ) );
+	glEnableVertexAttribArray( 1 );
 	// texture coordinates
-	glVertexAttribPointer( 2, 2, GL_FLOAT, GL_FALSE, sizeof( float ) * 5, ( void* ) ( sizeof( float ) * 3 ) );
+	glVertexAttribPointer( 2, 2, GL_FLOAT, GL_FALSE, sizeof( float ) * 8, ( void* ) ( sizeof( float ) * 6 ) );
 	glEnableVertexAttribArray( 2 );
 
 
@@ -192,18 +208,19 @@ int main()
 
 	glBindBuffer( GL_ARRAY_BUFFER, VBO );
 
-	glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, sizeof( float ) * 5, ( void* ) 0 );
+	glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, sizeof( float ) * 8, ( void* ) 0 );
 	glEnableVertexAttribArray( 0 );
 
 #pragma endregion
-
+	
 #pragma region ShaderGen
 
 	// object shader
 	Shader objectShader( "BasicADSLighting/Shaders/vertexShader.glsl", "BasicADSLighting/Shaders/fragmentShader.glsl" );
 
-	objectShader.setVec3( "objectColor", glm::vec3( 1.f, .5f, .31f ) );
-	objectShader.setVec3( "lightColor", glm::vec3( 1.f, 1.f, 1.f ) );
+	objectShader.setVec3( "u_objectColor", glm::vec3( 1.f, .5f, .31f ) );
+	objectShader.setVec3( "u_lightPos", lightPos );
+	objectShader.setVec3( "u_lightColor", glm::vec3( 1.f, 1.f, 1.f ) );
 
 
 	// light shader
@@ -224,6 +241,7 @@ int main()
 
 	while ( !glfwWindowShouldClose( window ) )
 	{
+		glClearColor( .12f, .12f, .12f, 1.f );
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 
@@ -263,13 +281,16 @@ int main()
 		// Model displacement
 		model = glm::mat4( 1.f );
 		model = glm::translate( model, cubePosition );
-		objectShader.setMatrix4( "model", model );
+		objectShader.setMatrix4( "u_model", model );
 
 		// Set View matrix
-		objectShader.setMatrix4( "view", view );
+		objectShader.setMatrix4( "u_view", view );
 
 		// Set Projection matrix
-		objectShader.setMatrix4( "projection", projection );
+		objectShader.setMatrix4( "u_projection", projection );
+
+		// Set the look direction
+		objectShader.setVec3( "u_viewPos", camera.Position );
 
 		// Bind VAO for objects
 		glBindVertexArray( VAO );
@@ -277,6 +298,20 @@ int main()
 		glDrawArrays( GL_TRIANGLES, 0, 36 );
 
 #pragma endregion
+
+		float lightSpeed = 1.f * deltaTime;
+		glm::vec3 moveVec(0.f);
+		if ( glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS )
+			moveVec.z -= 1.f * lightSpeed;
+		if ( glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS )
+			moveVec.z += 1.f * lightSpeed;
+		if ( glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS )
+			moveVec.x -= 1.f * lightSpeed;
+		if ( glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS )
+			moveVec.x += 1.f * lightSpeed;
+
+		lightPos += moveVec;
+		objectShader.setVec3( "u_lightPos", lightPos );
 
 #pragma region LightProcessing
 
@@ -287,13 +322,13 @@ int main()
 		model = glm::mat4( 1.f );
 		model = glm::translate( model, lightPos );
 		model = glm::scale( model, glm::vec3( .2f ) );
-		lightShader.setMatrix4( "model", model );
+		lightShader.setMatrix4( "u_model", model );
 
 		// Set View matrix
-		lightShader.setMatrix4( "view", view );
+		lightShader.setMatrix4( "u_view", view );
 
 		// Set Projection matrix
-		lightShader.setMatrix4( "projection", projection );
+		lightShader.setMatrix4( "u_projection", projection );
 
 		// Bind VAO for objects
 		glBindVertexArray( lightVAO );
@@ -301,8 +336,8 @@ int main()
 		glDrawArrays( GL_TRIANGLES, 0, 36 );
 
 #pragma endregion
-		
-		
+
+
 		/* Swap front and back buffers */
 		glfwSwapBuffers( window );
 
