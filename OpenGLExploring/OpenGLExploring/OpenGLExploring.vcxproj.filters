@@ -48,6 +48,9 @@
     <ClCompile Include="LightingMaps\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DirectionalLight\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -76,5 +79,9 @@
     <None Include="LightingMaps\Shaders\lightFragmentShader.glsl" />
     <None Include="LightingMaps\Shaders\lightVertexShader.glsl" />
     <None Include="LightingMaps\Shaders\vertexShader.glsl" />
+    <None Include="DirectionalLight\Shaders\fragmentShader.glsl" />
+    <None Include="DirectionalLight\Shaders\lightFragmentShader.glsl" />
+    <None Include="DirectionalLight\Shaders\lightVertexShader.glsl" />
+    <None Include="DirectionalLight\Shaders\vertexShader.glsl" />
   </ItemGroup>
 </Project>
