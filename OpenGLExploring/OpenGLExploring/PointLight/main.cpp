@@ -28,7 +28,7 @@ bool firstMouse = true;
 float lastX = windowWidth / 2.f, lastY = windowHeight / 2.f;
 
 // light position
-glm::vec4 lightDir( -.2f, -1.f, -.3f, 0.f );
+glm::vec3 lightPos( 1.2f, 1.f, 2.f );
 
 int main()
 {
@@ -253,24 +253,27 @@ glm::vec3( -1.3f, 1.0f, -1.5f )
 #pragma region ShaderGen
 
 	// object shader
-	Shader objectShader( "DirectionalLight/Shaders/vertexShader.glsl", "DirectionalLight/Shaders/fragmentShader.glsl" );
-
+	Shader objectShader( "PointLight/Shaders/vertexShader.glsl", "PointLight/Shaders/fragmentShader.glsl" );
+	
 	objectShader.setInt( "material.diffuse", 0 );
 	objectShader.setInt( "material.specular", 1 );
 	objectShader.setInt( "material.emission", 2 );
 	objectShader.setFloat( "material.shininess", 32.f );
 
-	objectShader.setVec4( "light.direction", lightDir );
+	objectShader.setVec3( "light.position", lightPos );
 	glm::vec3 ambientColor( .2f, .2f, .2f );
 	objectShader.setVec3( "light.ambient", ambientColor );
 	glm::vec3 diffuseColor( .5f, .5f, .5f );
 	objectShader.setVec3( "light.diffuse", diffuseColor );
 	glm::vec3 specularColor( 1.f, 1.f, 1.f );
 	objectShader.setVec3( "light.specular", specularColor );
+	objectShader.setFloat( "light.constant", 1.f );
+	objectShader.setFloat( "light.linear", .09f );
+	objectShader.setFloat( "light.quadratic", .032f );
 
 
 	// light shader
-	Shader lightShader( "DirectionalLight/Shaders/lightVertexShader.glsl", "DirectionalLight/Shaders/lightFragmentShader.glsl" );
+	Shader lightShader( "PointLight/Shaders/lightVertexShader.glsl", "PointLight/Shaders/lightFragmentShader.glsl" );
 
 #pragma endregion
 
@@ -338,6 +341,7 @@ glm::vec3( -1.3f, 1.0f, -1.5f )
 		// Bind VAO for objects
 		glBindVertexArray( VAO );
 
+		// Model displacement
 		for ( unsigned int i = 0; i < 10; i++ )
 		{
 			glm::mat4 model = glm::mat4( 1.0f );
@@ -351,7 +355,7 @@ glm::vec3( -1.3f, 1.0f, -1.5f )
 
 #pragma endregion
 
-		/*float lightSpeed = 1.f * deltaTime;
+		float lightSpeed = 1.f * deltaTime;
 		glm::vec3 moveVec(0.f);
 		if ( glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS )
 			moveVec.z -= 1.f * lightSpeed;
@@ -363,33 +367,33 @@ glm::vec3( -1.3f, 1.0f, -1.5f )
 			moveVec.x += 1.f * lightSpeed;
 
 		lightPos += moveVec;
-		objectShader.setVec3( "light.position", lightPos );*/
+		objectShader.setVec3( "light.position", lightPos );
 
 #pragma region LightProcessing
 
-		//// Bind the shader for objects
-		//lightShader.use();
+		// Bind the shader for objects
+		lightShader.use();
 
-		//lightShader.setVec3( "light.ambient", ambientColor );
-		//lightShader.setVec3( "light.diffuse", diffuseColor );
-		//lightShader.setVec3( "light.specular", specularColor );
+		lightShader.setVec3( "light.ambient", ambientColor );
+		lightShader.setVec3( "light.diffuse", diffuseColor );
+		lightShader.setVec3( "light.specular", specularColor );
 
-		//// Model displacement
-		//model = glm::mat4( 1.f );
-		//model = glm::translate( model, lightPos );
-		//model = glm::scale( model, glm::vec3( .2f ) );
-		//lightShader.setMatrix4( "u_model", model );
+		// Model displacement
+		model = glm::mat4( 1.f );
+		model = glm::translate( model, lightPos );
+		model = glm::scale( model, glm::vec3( .2f ) );
+		lightShader.setMatrix4( "u_model", model );
 
-		//// Set View matrix
-		//lightShader.setMatrix4( "u_view", view );
+		// Set View matrix
+		lightShader.setMatrix4( "u_view", view );
 
-		//// Set Projection matrix
-		//lightShader.setMatrix4( "u_projection", projection );
+		// Set Projection matrix
+		lightShader.setMatrix4( "u_projection", projection );
 
-		//// Bind VAO for objects
-		//glBindVertexArray( lightVAO );
+		// Bind VAO for objects
+		glBindVertexArray( lightVAO );
 
-		//glDrawArrays( GL_TRIANGLES, 0, 36 );
+		glDrawArrays( GL_TRIANGLES, 0, 36 );
 
 #pragma endregion
 
