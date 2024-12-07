@@ -45,6 +45,9 @@
     <ClCompile Include="BasicADSLighting\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LightingMaps\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -69,5 +72,9 @@
     <None Include="BasicADSLighting\Shaders\vertexShader.glsl" />
     <None Include="BasicADSLighting\Shaders\lightFragmentShader.glsl" />
     <None Include="BasicADSLighting\Shaders\lightVertexShader.glsl" />
+    <None Include="LightingMaps\Shaders\fragmentShader.glsl" />
+    <None Include="LightingMaps\Shaders\lightFragmentShader.glsl" />
+    <None Include="LightingMaps\Shaders\lightVertexShader.glsl" />
+    <None Include="LightingMaps\Shaders\vertexShader.glsl" />
   </ItemGroup>
 </Project>

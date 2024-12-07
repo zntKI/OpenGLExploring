@@ -24,6 +24,7 @@
     <ClCompile Include="Camera\main.cpp" />
     <ClCompile Include="CoordSystems\main.cpp" />
     <ClCompile Include="HelloTriangle\main.cpp" />
+    <ClCompile Include="LightingMaps\main.cpp" />
     <ClCompile Include="Shaders\main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
@@ -43,6 +44,10 @@
     <None Include="Camera\vertexShader.glsl" />
     <None Include="CoordSystems\fragmentShader.glsl" />
     <None Include="CoordSystems\vertexShader.glsl" />
+    <None Include="LightingMaps\Shaders\fragmentShader.glsl" />
+    <None Include="LightingMaps\Shaders\lightFragmentShader.glsl" />
+    <None Include="LightingMaps\Shaders\lightVertexShader.glsl" />
+    <None Include="LightingMaps\Shaders\vertexShader.glsl" />
     <None Include="Shaders\fragmentShader.glsl" />
     <None Include="Shaders\vertexShader.glsl" />
     <None Include="Textures\fragmentShader.glsl" />
