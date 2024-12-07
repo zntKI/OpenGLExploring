@@ -68,9 +68,9 @@ int main()
 #pragma region TextureGen
 
 	// Generate an array of textures (in our case only 1) and stores them in the var
-	unsigned int texture1;
-	glGenTextures( 1, &texture1 );
-	glBindTexture( GL_TEXTURE_2D, texture1 );
+	unsigned int diffuseMap;
+	glGenTextures( 1, &diffuseMap );
+	glBindTexture( GL_TEXTURE_2D, diffuseMap );
 
 	// set the texture wrapping/filtering options (on currently bound texture)
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
@@ -81,12 +81,12 @@ int main()
 	int tWidth, tHeight, tNrChannels;
 
 	stbi_set_flip_vertically_on_load( true );
-	unsigned char* data = stbi_load( "Assets/Images/container.jpg", &tWidth, &tHeight,
+	unsigned char* data = stbi_load( "Assets/Images/container2.png", &tWidth, &tHeight,
 		&tNrChannels, 0 );
 
 	if ( data )
 	{
-		glTexImage2D( GL_TEXTURE_2D, 0, GL_RGB, tWidth, tHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data );
+		glTexImage2D( GL_TEXTURE_2D, 0, GL_RGB, tWidth, tHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data );
 		glGenerateMipmap( GL_TEXTURE_2D );
 	}
 	else
@@ -98,21 +98,47 @@ int main()
 
 
 
-	unsigned int texture2;
-	glGenTextures( 1, &texture2 );
-	glBindTexture( GL_TEXTURE_2D, texture2 );
+	unsigned int specularMap;
+	glGenTextures( 1, &specularMap );
+	glBindTexture( GL_TEXTURE_2D, specularMap );
 
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
-	data = stbi_load( "Assets/Images/awesomeface.png", &tWidth, &tHeight,
+	data = stbi_load( "Assets/Images/container2_specular.png", &tWidth, &tHeight,
 		&tNrChannels, 0 );
 
 	if ( data )
 	{
 		glTexImage2D( GL_TEXTURE_2D, 0, GL_RGB, tWidth, tHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data );
+		glGenerateMipmap( GL_TEXTURE_2D );
+	}
+	else
+	{
+		std::cout << "Failed to load texture" << std::endl;
+	}
+
+	stbi_image_free( data );
+
+
+
+	unsigned int emissionMap;
+	glGenTextures( 1, &emissionMap );
+	glBindTexture( GL_TEXTURE_2D, emissionMap );
+
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+
+	data = stbi_load( "Assets/Images/matrix.jpg", &tWidth, &tHeight,
+		&tNrChannels, 0 );
+
+	if ( data )
+	{
+		glTexImage2D( GL_TEXTURE_2D, 0, GL_RGB, tWidth, tHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data );
 		glGenerateMipmap( GL_TEXTURE_2D );
 	}
 	else
@@ -216,11 +242,11 @@ int main()
 #pragma region ShaderGen
 
 	// object shader
-	Shader objectShader( "BasicADSLighting/Shaders/vertexShader.glsl", "BasicADSLighting/Shaders/fragmentShader.glsl" );
+	Shader objectShader( "LightingMaps/Shaders/vertexShader.glsl", "LightingMaps/Shaders/fragmentShader.glsl" );
 
-	objectShader.setVec3( "material.ambient", glm::vec3( 1.f, .5f, .31f ) );
-	objectShader.setVec3( "material.diffuse", glm::vec3( 1.f, .5f, .31f ) );
-	objectShader.setVec3( "material.specular", glm::vec3( .5f, .5f, .5f ) );
+	objectShader.setInt( "material.diffuse", 0 );
+	objectShader.setInt( "material.specular", 1 );
+	objectShader.setInt( "material.emission", 2 );
 	objectShader.setFloat( "material.shininess", 32.f );
 
 	objectShader.setVec3( "light.position", lightPos );
@@ -233,15 +259,17 @@ int main()
 
 
 	// light shader
-	Shader lightShader( "BasicADSLighting/Shaders/lightVertexShader.glsl", "BasicADSLighting/Shaders/lightFragmentShader.glsl" );
+	Shader lightShader( "LightingMaps/Shaders/lightVertexShader.glsl", "LightingMaps/Shaders/lightFragmentShader.glsl" );
 
 #pragma endregion
 
 	// Usually set within the rendering loop but in our case that is not necessary since our program is static and does not require that
 	glActiveTexture( GL_TEXTURE0 );
-	glBindTexture( GL_TEXTURE_2D, texture1 );
+	glBindTexture( GL_TEXTURE_2D, diffuseMap );
 	glActiveTexture( GL_TEXTURE1 );
-	glBindTexture( GL_TEXTURE_2D, texture2 );
+	glBindTexture( GL_TEXTURE_2D, specularMap );
+	glActiveTexture( GL_TEXTURE2 );
+	glBindTexture( GL_TEXTURE_2D, emissionMap );
 
 	// input
 	glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
