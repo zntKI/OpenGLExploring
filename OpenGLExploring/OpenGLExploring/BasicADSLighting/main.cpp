@@ -218,9 +218,18 @@ int main()
 	// object shader
 	Shader objectShader( "BasicADSLighting/Shaders/vertexShader.glsl", "BasicADSLighting/Shaders/fragmentShader.glsl" );
 
-	objectShader.setVec3( "u_objectColor", glm::vec3( 1.f, .5f, .31f ) );
-	objectShader.setVec3( "u_lightPos", lightPos );
-	objectShader.setVec3( "u_lightColor", glm::vec3( 1.f, 1.f, 1.f ) );
+	objectShader.setVec3( "material.ambient", glm::vec3( 1.f, .5f, .31f ) );
+	objectShader.setVec3( "material.diffuse", glm::vec3( 1.f, .5f, .31f ) );
+	objectShader.setVec3( "material.specular", glm::vec3( .5f, .5f, .5f ) );
+	objectShader.setFloat( "material.shininess", 32.f );
+
+	objectShader.setVec3( "light.position", lightPos );
+	glm::vec3 ambientColor( .2f, .2f, .2f );
+	objectShader.setVec3( "light.ambient", ambientColor );
+	glm::vec3 diffuseColor( .5f, .5f, .5f );
+	objectShader.setVec3( "light.diffuse", diffuseColor );
+	glm::vec3 specularColor( 1.f, 1.f, 1.f );
+	objectShader.setVec3( "light.specular", specularColor );
 
 
 	// light shader
@@ -311,12 +320,28 @@ int main()
 			moveVec.x += 1.f * lightSpeed;
 
 		lightPos += moveVec;
-		objectShader.setVec3( "u_lightPos", lightPos );
+		objectShader.setVec3( "light.position", lightPos );
+
+		glm::vec3 lightColor;
+		lightColor.x = sin( glfwGetTime() * 2.0f );
+		lightColor.y = sin( glfwGetTime() * 0.7f );
+		lightColor.z = sin( glfwGetTime() * 1.3f );
+
+		glm::vec3 diffuseColor = lightColor * glm::vec3( 0.5f );
+		glm::vec3 ambientColor = diffuseColor * glm::vec3( 0.2f );
+
+		objectShader.setVec3( "light.ambient", ambientColor );
+		objectShader.setVec3( "light.diffuse", diffuseColor );
+
 
 #pragma region LightProcessing
 
 		// Bind the shader for objects
 		lightShader.use();
+
+		lightShader.setVec3( "light.ambient", ambientColor );
+		lightShader.setVec3( "light.diffuse", diffuseColor );
+		lightShader.setVec3( "light.specular", specularColor );
 
 		// Model displacement
 		model = glm::mat4( 1.f );
