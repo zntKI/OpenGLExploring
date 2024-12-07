@@ -29,6 +29,7 @@
     <ClCompile Include="PointLight\main.cpp" />
     <ClCompile Include="Shaders\main.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="SpotLight\main.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Textures\main.cpp" />
     <ClCompile Include="Transformations\main.cpp" />
@@ -60,6 +61,10 @@
     <None Include="PointLight\Shaders\vertexShader.glsl" />
     <None Include="Shaders\fragmentShader.glsl" />
     <None Include="Shaders\vertexShader.glsl" />
+    <None Include="SpotLight\Shaders\fragmentShader.glsl" />
+    <None Include="SpotLight\Shaders\lightFragmentShader.glsl" />
+    <None Include="SpotLight\Shaders\lightVertexShader.glsl" />
+    <None Include="SpotLight\Shaders\vertexShader.glsl" />
     <None Include="Textures\fragmentShader.glsl" />
     <None Include="Textures\vertexShader.glsl" />
     <None Include="Transformations\fragmentShader.glsl" />
