@@ -26,6 +26,7 @@
     <ClCompile Include="HelloTriangle\main.cpp" />
     <ClCompile Include="DirectionalLight\main.cpp" />
     <ClCompile Include="LightingMaps\main.cpp" />
+    <ClCompile Include="MultipleLights\main.cpp" />
     <ClCompile Include="PointLight\main.cpp" />
     <ClCompile Include="Shaders\main.cpp" />
     <ClCompile Include="shader.cpp" />
@@ -55,6 +56,10 @@
     <None Include="LightingMaps\Shaders\lightFragmentShader.glsl" />
     <None Include="LightingMaps\Shaders\lightVertexShader.glsl" />
     <None Include="LightingMaps\Shaders\vertexShader.glsl" />
+    <None Include="MultipleLights\Shaders\fragmentShader.glsl" />
+    <None Include="MultipleLights\Shaders\lightFragmentShader.glsl" />
+    <None Include="MultipleLights\Shaders\lightVertexShader.glsl" />
+    <None Include="MultipleLights\Shaders\vertexShader.glsl" />
     <None Include="PointLight\Shaders\fragmentShader.glsl" />
     <None Include="PointLight\Shaders\lightFragmentShader.glsl" />
     <None Include="PointLight\Shaders\lightVertexShader.glsl" />

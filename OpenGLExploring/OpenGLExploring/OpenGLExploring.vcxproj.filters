@@ -57,6 +57,9 @@
     <ClCompile Include="SpotLight\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MultipleLights\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -97,5 +100,9 @@
     <None Include="SpotLight\Shaders\lightFragmentShader.glsl" />
     <None Include="SpotLight\Shaders\lightVertexShader.glsl" />
     <None Include="SpotLight\Shaders\vertexShader.glsl" />
+    <None Include="MultipleLights\Shaders\fragmentShader.glsl" />
+    <None Include="MultipleLights\Shaders\lightFragmentShader.glsl" />
+    <None Include="MultipleLights\Shaders\lightVertexShader.glsl" />
+    <None Include="MultipleLights\Shaders\vertexShader.glsl" />
   </ItemGroup>
 </Project>
