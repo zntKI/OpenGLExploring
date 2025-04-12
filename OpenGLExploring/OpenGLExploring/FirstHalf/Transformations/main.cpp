@@ -8,7 +8,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "../shader.hpp"
+#include "../../shader.hpp"
 
 
 // TODO: make the colors rotate around the corners of the triangle
@@ -152,7 +152,7 @@ int main( void )
 
 #pragma region ShaderGen
 
-	Shader ourShader( "Transformations/vertexShader.glsl", "Transformations/fragmentShader.glsl" );
+	Shader ourShader( "FirstHalf/Transformations/vertexShader.glsl", "FirstHalf/Transformations/fragmentShader.glsl" );
 
 	ourShader.use();
 	ourShader.setInt( "texture1", 0 );

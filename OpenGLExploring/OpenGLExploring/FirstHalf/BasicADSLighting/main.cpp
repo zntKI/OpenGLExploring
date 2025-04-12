@@ -8,8 +8,8 @@
 
 #include <iostream>
 
-#include "../shader.hpp"
-#include "../camera.hpp"
+#include "../../shader.hpp"
+#include "../../camera.hpp"
 
 
 void scrollCallback( GLFWwindow* window, double xpos, double ypos );
@@ -216,7 +216,7 @@ int main()
 #pragma region ShaderGen
 
 	// object shader
-	Shader objectShader( "BasicADSLighting/Shaders/vertexShader.glsl", "BasicADSLighting/Shaders/fragmentShader.glsl" );
+	Shader objectShader( "FirstHalf/BasicADSLighting/Shaders/vertexShader.glsl", "FirstHalf/BasicADSLighting/Shaders/fragmentShader.glsl" );
 
 	objectShader.setVec3( "material.ambient", glm::vec3( 1.f, .5f, .31f ) );
 	objectShader.setVec3( "material.diffuse", glm::vec3( 1.f, .5f, .31f ) );
@@ -233,7 +233,7 @@ int main()
 
 
 	// light shader
-	Shader lightShader( "BasicADSLighting/Shaders/lightVertexShader.glsl", "BasicADSLighting/Shaders/lightFragmentShader.glsl" );
+	Shader lightShader( "FirstHalf/BasicADSLighting/Shaders/lightVertexShader.glsl", "FirstHalf/BasicADSLighting/Shaders/lightFragmentShader.glsl" );
 
 #pragma endregion
 

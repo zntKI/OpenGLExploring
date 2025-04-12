@@ -8,8 +8,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "../shader.hpp"
-#include "../camera.hpp"
+#include "../../shader.hpp"
+#include "../../camera.hpp"
 
 void scrollCallback( GLFWwindow* window, double xpos, double ypos );
 void mouseCallback( GLFWwindow* window, double xposIn, double yposIn );
@@ -204,7 +204,7 @@ int main( void )
 
 #pragma region ShaderGen
 
-	Shader ourShader( "Camera/vertexShader.glsl", "Camera/fragmentShader.glsl" );
+	Shader ourShader( "FirstHalf/Camera/vertexShader.glsl", "FirstHalf/Camera/fragmentShader.glsl" );
 
 	ourShader.use();
 	ourShader.setInt( "texture1", 0 );

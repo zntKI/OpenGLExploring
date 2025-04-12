@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <algorithm>
-#include "../shader.hpp"
+#include "../../shader.hpp"
 
 #include <stb_image.h>
 
@@ -138,7 +138,7 @@ int main( void )
 	glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( indices ), indices, GL_STATIC_DRAW );
 
 
-	Shader ourShader( "Textures/vertexShader.glsl", "Textures/fragmentShader.glsl" );
+	Shader ourShader( "FirstHalf/Textures/vertexShader.glsl", "FirstHalf/Textures/fragmentShader.glsl" );
 
 	ourShader.use();
 	ourShader.setInt( "texture1", 0 );

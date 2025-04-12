@@ -1,7 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include "../shader.hpp"
+#include "../../shader.hpp"
 
 // TODO: make the colors rotate around the corners of the triangle
 
@@ -69,7 +69,7 @@ int main( void )
 	glBufferData( GL_ELEMENT_ARRAY_BUFFER, 3 * sizeof( unsigned int ), indices, GL_STATIC_DRAW );
 
 
-	Shader ourShader( "Shaders/vertexShader.glsl", "Shaders/fragmentShader.glsl" );
+	Shader ourShader( "FirstHalf/Shaders/vertexShader.glsl", "FirstHalf/Shaders/fragmentShader.glsl" );
 
 	/* Loop until the user closes the window */
 	while ( !glfwWindowShouldClose( window ) )

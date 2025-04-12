@@ -15,49 +15,49 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Shaders\main.cpp">
+    <ClCompile Include="FirstHalf\Shaders\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HelloTriangle\main.cpp">
+    <ClCompile Include="FirstHalf\HelloTriangle\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Textures\main.cpp">
+    <ClCompile Include="FirstHalf\Textures\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transformations\main.cpp">
+    <ClCompile Include="FirstHalf\Transformations\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CoordSystems\main.cpp">
+    <ClCompile Include="FirstHalf\CoordSystems\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Camera\main.cpp">
+    <ClCompile Include="FirstHalf\Camera\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BasicADSLighting\main.cpp">
+    <ClCompile Include="FirstHalf\BasicADSLighting\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LightingMaps\main.cpp">
+    <ClCompile Include="FirstHalf\LightingMaps\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DirectionalLight\main.cpp">
+    <ClCompile Include="FirstHalf\DirectionalLight\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PointLight\main.cpp">
+    <ClCompile Include="FirstHalf\PointLight\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpotLight\main.cpp">
+    <ClCompile Include="FirstHalf\SpotLight\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MultipleLights\main.cpp">
+    <ClCompile Include="FirstHalf\MultipleLights\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -70,39 +70,39 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\vertexShader.glsl" />
-    <None Include="Shaders\fragmentShader.glsl" />
-    <None Include="Textures\fragmentShader.glsl" />
-    <None Include="Textures\vertexShader.glsl" />
-    <None Include="Transformations\fragmentShader.glsl" />
-    <None Include="Transformations\vertexShader.glsl" />
-    <None Include="CoordSystems\vertexShader.glsl" />
-    <None Include="CoordSystems\fragmentShader.glsl" />
-    <None Include="Camera\vertexShader.glsl" />
-    <None Include="Camera\fragmentShader.glsl" />
-    <None Include="BasicADSLighting\Shaders\fragmentShader.glsl" />
-    <None Include="BasicADSLighting\Shaders\vertexShader.glsl" />
-    <None Include="BasicADSLighting\Shaders\lightFragmentShader.glsl" />
-    <None Include="BasicADSLighting\Shaders\lightVertexShader.glsl" />
-    <None Include="LightingMaps\Shaders\fragmentShader.glsl" />
-    <None Include="LightingMaps\Shaders\lightFragmentShader.glsl" />
-    <None Include="LightingMaps\Shaders\lightVertexShader.glsl" />
-    <None Include="LightingMaps\Shaders\vertexShader.glsl" />
-    <None Include="DirectionalLight\Shaders\fragmentShader.glsl" />
-    <None Include="DirectionalLight\Shaders\lightFragmentShader.glsl" />
-    <None Include="DirectionalLight\Shaders\lightVertexShader.glsl" />
-    <None Include="DirectionalLight\Shaders\vertexShader.glsl" />
-    <None Include="PointLight\Shaders\fragmentShader.glsl" />
-    <None Include="PointLight\Shaders\lightFragmentShader.glsl" />
-    <None Include="PointLight\Shaders\lightVertexShader.glsl" />
-    <None Include="PointLight\Shaders\vertexShader.glsl" />
-    <None Include="SpotLight\Shaders\fragmentShader.glsl" />
-    <None Include="SpotLight\Shaders\lightFragmentShader.glsl" />
-    <None Include="SpotLight\Shaders\lightVertexShader.glsl" />
-    <None Include="SpotLight\Shaders\vertexShader.glsl" />
-    <None Include="MultipleLights\Shaders\fragmentShader.glsl" />
-    <None Include="MultipleLights\Shaders\lightFragmentShader.glsl" />
-    <None Include="MultipleLights\Shaders\lightVertexShader.glsl" />
-    <None Include="MultipleLights\Shaders\vertexShader.glsl" />
+    <None Include="FirstHalf\Shaders\vertexShader.glsl" />
+    <None Include="FirstHalf\Shaders\fragmentShader.glsl" />
+    <None Include="FirstHalf\Textures\fragmentShader.glsl" />
+    <None Include="FirstHalf\Textures\vertexShader.glsl" />
+    <None Include="FirstHalf\Transformations\fragmentShader.glsl" />
+    <None Include="FirstHalf\Transformations\vertexShader.glsl" />
+    <None Include="FirstHalf\CoordSystems\vertexShader.glsl" />
+    <None Include="FirstHalf\CoordSystems\fragmentShader.glsl" />
+    <None Include="FirstHalf\Camera\vertexShader.glsl" />
+    <None Include="FirstHalf\Camera\fragmentShader.glsl" />
+    <None Include="FirstHalf\BasicADSLighting\Shaders\fragmentShader.glsl" />
+    <None Include="FirstHalf\BasicADSLighting\Shaders\vertexShader.glsl" />
+    <None Include="FirstHalf\BasicADSLighting\Shaders\lightFragmentShader.glsl" />
+    <None Include="FirstHalf\BasicADSLighting\Shaders\lightVertexShader.glsl" />
+    <None Include="FirstHalf\LightingMaps\Shaders\fragmentShader.glsl" />
+    <None Include="FirstHalf\LightingMaps\Shaders\lightFragmentShader.glsl" />
+    <None Include="FirstHalf\LightingMaps\Shaders\lightVertexShader.glsl" />
+    <None Include="FirstHalf\LightingMaps\Shaders\vertexShader.glsl" />
+    <None Include="FirstHalf\DirectionalLight\Shaders\fragmentShader.glsl" />
+    <None Include="FirstHalf\DirectionalLight\Shaders\lightFragmentShader.glsl" />
+    <None Include="FirstHalf\DirectionalLight\Shaders\lightVertexShader.glsl" />
+    <None Include="FirstHalf\DirectionalLight\Shaders\vertexShader.glsl" />
+    <None Include="FirstHalf\PointLight\Shaders\fragmentShader.glsl" />
+    <None Include="FirstHalf\PointLight\Shaders\lightFragmentShader.glsl" />
+    <None Include="FirstHalf\PointLight\Shaders\lightVertexShader.glsl" />
+    <None Include="FirstHalf\PointLight\Shaders\vertexShader.glsl" />
+    <None Include="FirstHalf\SpotLight\Shaders\fragmentShader.glsl" />
+    <None Include="FirstHalf\SpotLight\Shaders\lightFragmentShader.glsl" />
+    <None Include="FirstHalf\SpotLight\Shaders\lightVertexShader.glsl" />
+    <None Include="FirstHalf\SpotLight\Shaders\vertexShader.glsl" />
+    <None Include="FirstHalf\MultipleLights\Shaders\fragmentShader.glsl" />
+    <None Include="FirstHalf\MultipleLights\Shaders\lightFragmentShader.glsl" />
+    <None Include="FirstHalf\MultipleLights\Shaders\lightVertexShader.glsl" />
+    <None Include="FirstHalf\MultipleLights\Shaders\vertexShader.glsl" />
   </ItemGroup>
 </Project>
