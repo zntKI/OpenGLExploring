@@ -29,6 +29,9 @@
     <ClCompile Include="FirstHalf\MultipleLights\main.cpp" />
     <ClCompile Include="FirstHalf\PointLight\main.cpp" />
     <ClCompile Include="FirstHalf\Shaders\main.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="SecondHalf\ModelLoading\main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="FirstHalf\SpotLight\main.cpp" />
     <ClCompile Include="stb_image.cpp" />
@@ -37,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.hpp" />
+    <ClInclude Include="Mesh.hpp" />
+    <ClInclude Include="Model.hpp" />
     <ClInclude Include="shader.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +79,7 @@
     <None Include="FirstHalf\Textures\vertexShader.glsl" />
     <None Include="FirstHalf\Transformations\fragmentShader.glsl" />
     <None Include="FirstHalf\Transformations\vertexShader.glsl" />
+    <None Include="SecondHalf\ModelLoading\Shaders\fragmentShader.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
