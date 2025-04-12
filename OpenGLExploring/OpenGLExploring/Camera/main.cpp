@@ -269,7 +269,7 @@ glm::vec3( -1.3f, 1.0f, -1.5f )
 
 			glDrawArrays( GL_TRIANGLES, 0, 36 );
 		}
-
+		
 		// View matrix
 		glm::mat4 view = camera.GetViewMatrix();
 		ourShader.setMatrix4( "view", view );

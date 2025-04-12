@@ -99,7 +99,9 @@ int main( void )
 		return -1;
 	}
 
-	std::cout << glGetString( GL_VERSION ) << std::endl;
+	int nrAttributes;
+	glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, &nrAttributes );
+	std::cout << nrAttributes << std::endl;
 
 	// Vertices
 	float positions[] = {
