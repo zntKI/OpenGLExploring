@@ -71,6 +71,17 @@ int main()
 	// object shader
 	Shader objectShader( "SecondHalf/ModelLoading/Shaders/vertexShader.glsl", "SecondHalf/ModelLoading/Shaders/fragmentShader.glsl" );
 
+	objectShader.use();
+
+	// Material
+	objectShader.setFloat( "u_Material.shininess", 32.f );
+
+	// Directional light
+	objectShader.setVec3( "u_DirectionalLight.direction", glm::vec3( -.2f, -1.f, -.3f ) );
+	objectShader.setVec3( "u_DirectionalLight.ambient", glm::vec3( 0.05f, 0.05f, 0.05f ) );
+	objectShader.setVec3( "u_DirectionalLight.diffuse", glm::vec3( 0.4f, 0.4f, 0.4f ) );
+	objectShader.setVec3( "u_DirectionalLight.specular", glm::vec3( 0.5f, 0.5f, 0.5f ) );
+
 #pragma endregion
 
 	// input
@@ -104,14 +115,19 @@ int main()
 		glfwGetWindowSize( window, &screenWidth, &screenHeight );
 		glm::mat4 projection = glm::perspective( glm::radians( camera.Zoom ), screenWidth / ( float ) screenHeight, .1f, 100.f );
 
-		objectShader.setMatrix4( "projection", projection );
-		objectShader.setMatrix4( "view", view );
+		objectShader.setMatrix4( "u_Projection", projection );
+		objectShader.setMatrix4( "u_View", view );
+		objectShader.setVec3( "u_ViewPos", camera.Position );
 
 		glm::mat4 model = glm::mat4( 1.0f );
 		model = glm::translate( model, glm::vec3( 0.0f, 0.0f, 0.0f ) ); // translate it down so it's at the center of the scene
 		model = glm::scale( model, glm::vec3( .5f, .5f, .5f ) );	// it's a bit too big for our scene, so scale it down
-		objectShader.setMatrix4( "model", model );
+		objectShader.setMatrix4( "u_Model", model );
 
+		glm::mat3 normalMatrix = glm::mat3( model );
+		normalMatrix = glm::transpose( normalMatrix );
+		normalMatrix = glm::inverse( normalMatrix );
+		objectShader.setMatrix3( "u_NormalMatrix", normalMatrix );
 
 		backpack.Draw( objectShader );
 

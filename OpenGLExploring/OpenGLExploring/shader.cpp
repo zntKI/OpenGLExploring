@@ -147,3 +147,8 @@ void Shader::setMatrix4( const std::string& name, glm::mat4 matrix ) const
 {
 	glUniformMatrix4fv( glGetUniformLocation( this->ID, name.c_str() ), 1, GL_FALSE, glm::value_ptr( matrix ) );
 }
+
+void Shader::setMatrix3( const std::string& name, glm::mat3 matrix ) const
+{
+	glUniformMatrix3fv( glGetUniformLocation( this->ID, name.c_str() ), 1, GL_FALSE, glm::value_ptr( matrix ) );
+}
