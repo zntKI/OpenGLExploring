@@ -72,6 +72,9 @@
     <ClCompile Include="SecondHalf\DepthAndStencilTesting\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\Blending\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -126,5 +129,10 @@
     <None Include="SecondHalf\DepthAndStencilTesting\Shaders\fragmentShader.glsl" />
     <None Include="SecondHalf\DepthAndStencilTesting\Shaders\colorVertexShader.glsl" />
     <None Include="SecondHalf\DepthAndStencilTesting\Shaders\colorFragmentShader.glsl" />
+    <None Include="SecondHalf\Blending\Shaders\vertexShader.glsl" />
+    <None Include="SecondHalf\Blending\Shaders\blendFragmentShader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SecondHalf\Blending\Shaders\discardFragmentShader.glsl" />
   </ItemGroup>
 </Project>
