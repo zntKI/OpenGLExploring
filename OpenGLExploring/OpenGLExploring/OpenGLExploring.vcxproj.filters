@@ -69,6 +69,9 @@
     <ClCompile Include="SecondHalf\ModelLoading\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\DepthAndStencilTesting\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -120,5 +123,8 @@
     <None Include="FirstHalf\MultipleLights\Shaders\lightVertexShader.glsl" />
     <None Include="FirstHalf\MultipleLights\Shaders\vertexShader.glsl" />
     <None Include="SecondHalf\ModelLoading\Shaders\fragmentShader.glsl" />
+    <None Include="SecondHalf\DepthAndStencilTesting\Shaders\fragmentShader.glsl" />
+    <None Include="SecondHalf\DepthAndStencilTesting\Shaders\colorVertexShader.glsl" />
+    <None Include="SecondHalf\DepthAndStencilTesting\Shaders\colorFragmentShader.glsl" />
   </ItemGroup>
 </Project>

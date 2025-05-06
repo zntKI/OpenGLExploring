@@ -59,18 +59,19 @@ int main()
 
 	// Use z-buffer
 	glEnable( GL_DEPTH_TEST );
-	glDepthFunc( GL_LESS );
+	glEnable( GL_STENCIL_TEST );
 
 	std::cout << glGetString( GL_VERSION ) << std::endl;
 
 #pragma endregion
 
 	Model backpack( "Assets/Models/Backpack/backpack.obj" );
+	Model backpack2( "Assets/Models/Backpack/backpack.obj" );
 
 #pragma region ShaderGen
 
 	// object shader
-	Shader objectShader( "SecondHalf/ModelLoading/Shaders/vertexShader.glsl", "SecondHalf/ModelLoading/Shaders/fragmentShader.glsl" );
+	Shader objectShader( "SecondHalf/DepthAndStencilTesting/Shaders/vertexShader.glsl", "SecondHalf/DepthAndStencilTesting/Shaders/fragmentShader.glsl" );
 
 	objectShader.use();
 
@@ -83,6 +84,9 @@ int main()
 	objectShader.setVec3( "u_DirectionalLight.diffuse", glm::vec3( 0.4f, 0.4f, 0.4f ) );
 	objectShader.setVec3( "u_DirectionalLight.specular", glm::vec3( 0.5f, 0.5f, 0.5f ) );
 
+
+	Shader colorShader( "SecondHalf/DepthAndStencilTesting/Shaders/colorVertexShader.glsl", "SecondHalf/DepthAndStencilTesting/Shaders/colorFragmentShader.glsl" );
+
 #pragma endregion
 
 	// input
@@ -90,9 +94,11 @@ int main()
 	glfwSetCursorPosCallback( window, mouseCallback );
 	glfwSetScrollCallback( window, scrollCallback );
 
+	glStencilOp( GL_KEEP, GL_KEEP, GL_REPLACE );
+
 	while ( !glfwWindowShouldClose( window ) ) {
 		glClearColor( .12f, .12f, .12f, 1.f );
-		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );
 
 
 		// Keep track of time
@@ -105,6 +111,10 @@ int main()
 		processInput( window );
 
 #pragma region DefiningMatrices
+
+		glStencilFunc( GL_ALWAYS, 1, 0xFF );
+		glStencilMask( 0xFF );
+
 
 		// Bind the shader for objects
 		objectShader.use();
@@ -121,7 +131,6 @@ int main()
 		objectShader.setVec3( "u_ViewPos", camera.Position );
 
 		glm::mat4 model = glm::mat4( 1.0f );
-		model = glm::translate( model, glm::vec3( 0.0f, 0.0f, 0.0f ) );
 		model = glm::scale( model, glm::vec3( .5f, .5f, .5f ) );	// it's a bit too big for our scene, so scale it down
 		objectShader.setMatrix4( "u_Model", model );
 
@@ -132,6 +141,34 @@ int main()
 		objectShader.setMatrix3( "u_NormalMatrix", normalMatrix );
 
 		backpack.Draw( objectShader );
+
+		glm::mat4 model2 = glm::translate( model, glm::vec3( 5.0f, 0.0f, 0.0f ) );
+		objectShader.setMatrix4( "u_Model", model2 );
+
+		backpack2.Draw( objectShader );
+		
+
+		glStencilFunc( GL_NOTEQUAL, 1, 0xFF );
+		glStencilMask( 0xFF );
+		glDisable( GL_DEPTH_TEST );
+
+
+		colorShader.use();
+
+		colorShader.setMatrix4( "u_Projection", projection );
+		colorShader.setMatrix4( "u_View", view );
+		colorShader.setMatrix4( "u_Model", model );
+
+		backpack.Draw( colorShader );
+
+		colorShader.setMatrix4( "u_Model", model2 );
+
+		backpack2.Draw( colorShader );
+
+
+		glStencilMask( 0xFF );
+		glStencilFunc( GL_ALWAYS, 1, 0xFF );
+		glEnable( GL_DEPTH_TEST );
 
 #pragma endregion
 

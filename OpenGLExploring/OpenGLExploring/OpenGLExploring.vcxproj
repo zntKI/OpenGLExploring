@@ -31,6 +31,7 @@
     <ClCompile Include="FirstHalf\Shaders\main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="SecondHalf\DepthAndStencilTesting\main.cpp" />
     <ClCompile Include="SecondHalf\ModelLoading\main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="FirstHalf\SpotLight\main.cpp" />
@@ -79,6 +80,9 @@
     <None Include="FirstHalf\Textures\vertexShader.glsl" />
     <None Include="FirstHalf\Transformations\fragmentShader.glsl" />
     <None Include="FirstHalf\Transformations\vertexShader.glsl" />
+    <None Include="SecondHalf\DepthAndStencilTesting\Shaders\colorFragmentShader.glsl" />
+    <None Include="SecondHalf\DepthAndStencilTesting\Shaders\colorVertexShader.glsl" />
+    <None Include="SecondHalf\DepthAndStencilTesting\Shaders\fragmentShader.glsl" />
     <None Include="SecondHalf\ModelLoading\Shaders\fragmentShader.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
