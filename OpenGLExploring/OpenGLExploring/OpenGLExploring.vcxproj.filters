@@ -75,6 +75,9 @@
     <ClCompile Include="SecondHalf\Blending\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\FaceCulling\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -131,6 +134,8 @@
     <None Include="SecondHalf\DepthAndStencilTesting\Shaders\colorFragmentShader.glsl" />
     <None Include="SecondHalf\Blending\Shaders\vertexShader.glsl" />
     <None Include="SecondHalf\Blending\Shaders\blendFragmentShader.glsl" />
+    <None Include="SecondHalf\FaceCulling\fragmentShader.glsl" />
+    <None Include="SecondHalf\FaceCulling\vertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SecondHalf\Blending\Shaders\discardFragmentShader.glsl" />
