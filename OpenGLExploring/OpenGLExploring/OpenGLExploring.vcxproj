@@ -34,6 +34,7 @@
     <ClCompile Include="SecondHalf\Blending\main.cpp" />
     <ClCompile Include="SecondHalf\DepthAndStencilTesting\main.cpp" />
     <ClCompile Include="SecondHalf\FaceCulling\main.cpp" />
+    <ClCompile Include="SecondHalf\FrameBuffers\main.cpp" />
     <ClCompile Include="SecondHalf\ModelLoading\main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="FirstHalf\SpotLight\main.cpp" />
@@ -89,6 +90,9 @@
     <None Include="SecondHalf\DepthAndStencilTesting\Shaders\fragmentShader.glsl" />
     <None Include="SecondHalf\FaceCulling\fragmentShader.glsl" />
     <None Include="SecondHalf\FaceCulling\vertexShader.glsl" />
+    <None Include="SecondHalf\FrameBuffers\Shaders\fragmentShader.glsl" />
+    <None Include="SecondHalf\FrameBuffers\Shaders\screenFragmentShader.glsl" />
+    <None Include="SecondHalf\FrameBuffers\Shaders\screenVertexShader.glsl" />
     <None Include="SecondHalf\ModelLoading\Shaders\fragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>

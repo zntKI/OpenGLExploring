@@ -78,6 +78,9 @@
     <ClCompile Include="SecondHalf\FaceCulling\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\FrameBuffers\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -136,6 +139,9 @@
     <None Include="SecondHalf\Blending\Shaders\blendFragmentShader.glsl" />
     <None Include="SecondHalf\FaceCulling\fragmentShader.glsl" />
     <None Include="SecondHalf\FaceCulling\vertexShader.glsl" />
+    <None Include="SecondHalf\FrameBuffers\Shaders\fragmentShader.glsl" />
+    <None Include="SecondHalf\FrameBuffers\Shaders\screenVertexShader.glsl" />
+    <None Include="SecondHalf\FrameBuffers\Shaders\screenFragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SecondHalf\Blending\Shaders\discardFragmentShader.glsl" />
