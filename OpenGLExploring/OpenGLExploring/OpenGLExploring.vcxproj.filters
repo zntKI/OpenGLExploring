@@ -81,6 +81,9 @@
     <ClCompile Include="SecondHalf\FrameBuffers\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\CubeMaps\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -142,6 +145,12 @@
     <None Include="SecondHalf\FrameBuffers\Shaders\fragmentShader.glsl" />
     <None Include="SecondHalf\FrameBuffers\Shaders\screenVertexShader.glsl" />
     <None Include="SecondHalf\FrameBuffers\Shaders\screenFragmentShader.glsl" />
+    <None Include="SecondHalf\CubeMaps\Shaders\fragmentShader.glsl" />
+    <None Include="SecondHalf\CubeMaps\Shaders\skyboxVertexShader.glsl" />
+    <None Include="SecondHalf\CubeMaps\Shaders\skyboxFragmentShader.glsl" />
+    <None Include="SecondHalf\CubeMaps\Shaders\reflectFragmentShader.glsl" />
+    <None Include="SecondHalf\CubeMaps\Shaders\reflectAndRefractVertexShader.glsl" />
+    <None Include="SecondHalf\CubeMaps\Shaders\refractFragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SecondHalf\Blending\Shaders\discardFragmentShader.glsl" />
