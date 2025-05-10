@@ -56,8 +56,6 @@ int main()
 		return -1;
 	}
 
-	//stbi_set_flip_vertically_on_load( true );
-
 	// Use z-buffer
 	glEnable( GL_DEPTH_TEST );
 	glDepthFunc( GL_LESS );
@@ -65,6 +63,8 @@ int main()
 	std::cout << glGetString( GL_VERSION ) << std::endl;
 
 #pragma endregion
+
+	stbi_set_flip_vertically_on_load( true );
 
 	Model backpack( "Assets/Models/Backpack/backpack.obj" );
 
@@ -159,6 +159,8 @@ int main()
 		"Assets/Images/skybox/front.jpg",
 		"Assets/Images/skybox/back.jpg",
 	};
+
+	stbi_set_flip_vertically_on_load( false );
 
 	unsigned int cubeMapTex = loadCubeMap(faces);
 
