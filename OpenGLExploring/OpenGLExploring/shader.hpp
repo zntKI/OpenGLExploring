@@ -1,5 +1,7 @@
 #pragma once
 
+#include <GL/glew.h>
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -12,9 +14,18 @@ public:
 	// program ID
 	unsigned int ID;
 
-	Shader( const char* vertexPath, const char* fragmentPath );
+	Shader( const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr );
+private:
+	// for debugging
+	int success;
+	char infoLog[ 512 ];
+
+	void readCodeFromFile( const char* path, std::string& shaderCode );
+	void createCompileShader( GLenum SHADER_TYPE, unsigned int& shaderID, const char* shaderCode );
+
+public:
 	~Shader();
-	
+
 	void use();
 
 	void setBool( const std::string& name, bool value ) const;

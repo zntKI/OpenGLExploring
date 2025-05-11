@@ -84,6 +84,9 @@
     <ClCompile Include="SecondHalf\CubeMaps\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\GeometryShader\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -151,6 +154,15 @@
     <None Include="SecondHalf\CubeMaps\Shaders\reflectFragmentShader.glsl" />
     <None Include="SecondHalf\CubeMaps\Shaders\reflectAndRefractVertexShader.glsl" />
     <None Include="SecondHalf\CubeMaps\Shaders\refractFragmentShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\pointsVertexShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\pointsFragmentShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\pointsGeometryShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\explodeVertexShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\explodeGeometryShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\explodeFragmentShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\normalsVertexShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\normalsGeometryShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\normalsFragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SecondHalf\Blending\Shaders\discardFragmentShader.glsl" />

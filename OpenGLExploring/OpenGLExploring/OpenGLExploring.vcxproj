@@ -36,6 +36,7 @@
     <ClCompile Include="SecondHalf\DepthAndStencilTesting\main.cpp" />
     <ClCompile Include="SecondHalf\FaceCulling\main.cpp" />
     <ClCompile Include="SecondHalf\FrameBuffers\main.cpp" />
+    <ClCompile Include="SecondHalf\GeometryShader\main.cpp" />
     <ClCompile Include="SecondHalf\ModelLoading\main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="FirstHalf\SpotLight\main.cpp" />
@@ -100,6 +101,15 @@
     <None Include="SecondHalf\FrameBuffers\Shaders\fragmentShader.glsl" />
     <None Include="SecondHalf\FrameBuffers\Shaders\screenFragmentShader.glsl" />
     <None Include="SecondHalf\FrameBuffers\Shaders\screenVertexShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\explodeFragmentShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\explodeGeometryShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\explodeVertexShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\normalsFragmentShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\normalsGeometryShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\normalsVertexShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\pointsFragmentShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\pointsGeometryShader.glsl" />
+    <None Include="SecondHalf\GeometryShader\Shaders\pointsVertexShader.glsl" />
     <None Include="SecondHalf\ModelLoading\Shaders\fragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
