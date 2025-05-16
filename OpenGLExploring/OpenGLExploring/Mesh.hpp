@@ -33,9 +33,11 @@ public:
 		std::vector<Texture> textures );
 	void Draw( Shader& shader );
 
+	unsigned int VAO;
+
 private:
 	// render data
-	unsigned int VAO, VBO, EBO;
+	unsigned int VBO, EBO;
 
 	void setupMesh();
 };

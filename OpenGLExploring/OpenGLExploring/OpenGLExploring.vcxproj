@@ -37,6 +37,7 @@
     <ClCompile Include="SecondHalf\FaceCulling\main.cpp" />
     <ClCompile Include="SecondHalf\FrameBuffers\main.cpp" />
     <ClCompile Include="SecondHalf\GeometryShader\main.cpp" />
+    <ClCompile Include="SecondHalf\Instancing\main.cpp" />
     <ClCompile Include="SecondHalf\ModelLoading\main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="FirstHalf\SpotLight\main.cpp" />
@@ -110,6 +111,8 @@
     <None Include="SecondHalf\GeometryShader\Shaders\pointsFragmentShader.glsl" />
     <None Include="SecondHalf\GeometryShader\Shaders\pointsGeometryShader.glsl" />
     <None Include="SecondHalf\GeometryShader\Shaders\pointsVertexShader.glsl" />
+    <None Include="SecondHalf\Instancing\Shaders\fragmentShader.glsl" />
+    <None Include="SecondHalf\Instancing\Shaders\rockVertexShader.glsl" />
     <None Include="SecondHalf\ModelLoading\Shaders\fragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
