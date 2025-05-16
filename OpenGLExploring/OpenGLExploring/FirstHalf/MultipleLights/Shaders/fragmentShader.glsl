@@ -98,8 +98,9 @@ vec3 calculateDirectionalLight(DirectionalLight light, vec3 normal, vec3 lookDir
    vec3 diffuse = light.diffuse * (diff * vec3(texture(material.diffuse, TexCoords)));
 
    // Specular
-   vec3 reflectedLightDir = reflect(-lightDir, normal);
-   float spec = pow(max(0.0, dot(lookDir, reflectedLightDir)), material.shininess);
+   //vec3 reflectedLightDir = reflect(-lightDir, normal);
+   vec3 halfwayDir = normalize(lightDir + lookDir);
+   float spec = pow(max(0.0, dot(halfwayDir, normal)), material.shininess);
    vec3  texValue = vec3(texture(material.specular, TexCoords));
    vec3 specular = light.specular * (spec * texValue);
 
@@ -120,8 +121,9 @@ vec3 calculatePointLight(PointLight light, vec3 normal, vec3 lookDir, vec3 emiss
    vec3 diffuse = light.diffuse * (diff * vec3(texture(material.diffuse, TexCoords)));
 
    // Specular
-   vec3 reflectedLightDir = reflect(-lightDir, normal);
-   float spec = pow(max(0.0, dot(lookDir, reflectedLightDir)), material.shininess);
+   //vec3 reflectedLightDir = reflect(-lightDir, normal);
+   vec3 halfwayDir = normalize(lightDir + lookDir);
+   float spec = pow(max(0.0, dot(halfwayDir, normal)), material.shininess);
    vec3  texValue = vec3(texture(material.specular, TexCoords));
    vec3 specular = light.specular * (spec * texValue);
 
@@ -150,8 +152,9 @@ vec3 calculateSpotLight(SpotLight light, vec3 normal, vec3 lookDir, vec3 emissio
    vec3 diffuse = light.diffuse * (diff * vec3(texture(material.diffuse, TexCoords)));
 
    // Specular
-   vec3 reflectedLightDir = reflect(-lightDir, normal);
-   float spec = pow(max(0.0, dot(lookDir, reflectedLightDir)), material.shininess);
+   //vec3 reflectedLightDir = reflect(-lightDir, normal);
+   vec3 halfwayDir = normalize(lightDir + lookDir);
+   float spec = pow(max(0.0, dot(halfwayDir, normal)), material.shininess);
    vec3  texValue = vec3(texture(material.specular, TexCoords));
    vec3 specular = light.specular * (spec * texValue);
 
