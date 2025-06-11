@@ -93,6 +93,9 @@
     <ClCompile Include="SecondHalf\ShadowMapping\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\PointShadows\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -175,6 +178,11 @@
     <None Include="SecondHalf\ShadowMapping\Shaders\depthFragmentShader.glsl" />
     <None Include="SecondHalf\ShadowMapping\Shaders\shadowVertexShader.glsl" />
     <None Include="SecondHalf\ShadowMapping\Shaders\shadowFragmentShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\depthFragmentShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\depthVertexShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\shadowFragmentShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\shadowVertexShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\depthGeometryShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SecondHalf\Blending\Shaders\discardFragmentShader.glsl" />

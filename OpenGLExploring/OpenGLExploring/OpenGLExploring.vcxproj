@@ -39,6 +39,7 @@
     <ClCompile Include="SecondHalf\GeometryShader\main.cpp" />
     <ClCompile Include="SecondHalf\Instancing\main.cpp" />
     <ClCompile Include="SecondHalf\ModelLoading\main.cpp" />
+    <ClCompile Include="SecondHalf\PointShadows\main.cpp" />
     <ClCompile Include="SecondHalf\ShadowMapping\main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="FirstHalf\SpotLight\main.cpp" />
@@ -115,6 +116,11 @@
     <None Include="SecondHalf\Instancing\Shaders\fragmentShader.glsl" />
     <None Include="SecondHalf\Instancing\Shaders\rockVertexShader.glsl" />
     <None Include="SecondHalf\ModelLoading\Shaders\fragmentShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\depthFragmentShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\depthGeometryShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\depthVertexShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\shadowFragmentShader.glsl" />
+    <None Include="SecondHalf\PointShadows\Shaders\shadowVertexShader.glsl" />
     <None Include="SecondHalf\ShadowMapping\Shaders\depthFragmentShader.glsl" />
     <None Include="SecondHalf\ShadowMapping\Shaders\depthVertexShader.glsl" />
     <None Include="SecondHalf\ShadowMapping\Shaders\shadowFragmentShader.glsl" />
