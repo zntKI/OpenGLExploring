@@ -4,14 +4,14 @@ in VS_OUT {
 
 	vec3 fragPos;
 	vec2 texCoords;
+	vec3 tangentLightPos;
+	vec3 tangentViewPos;
+	vec3 tangentFragPos;
 
 } i_fs;
 
 uniform sampler2D u_TexDiffuse;
 uniform sampler2D u_TexNormal;
-
-uniform vec3 u_LightPos;
-uniform vec3 u_ViewPos;
 
 out vec4 o_fragColor;
 
@@ -28,12 +28,12 @@ void main()
 	vec3 ambient = 0.15 * color;
 
 	//diffuse
-	vec3 lightDir = normalize(u_LightPos - i_fs.fragPos);
+	vec3 lightDir = normalize(i_fs.tangentLightPos - i_fs.tangentFragPos);
 	float diff = max(dot(lightDir, normal), 0.0);
 	vec3 diffuse = diff * lightColor;
 
 	//specular
-	vec3 viewDir = normalize(u_ViewPos - i_fs.fragPos);
+	vec3 viewDir = normalize(i_fs.tangentViewPos - i_fs.tangentFragPos);
 	float spec = 0.0;
 	vec3 halfwayDir = normalize(lightDir + viewDir);
 	spec = pow(max(dot(normal, halfwayDir), 0.0), 64.0);
