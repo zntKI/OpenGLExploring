@@ -99,6 +99,9 @@
     <ClCompile Include="SecondHalf\NormalMapping\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\HDR\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -188,6 +191,10 @@
     <None Include="SecondHalf\PointShadows\Shaders\depthGeometryShader.glsl" />
     <None Include="SecondHalf\NormalMapping\Shaders\normalVertexShader.glsl" />
     <None Include="SecondHalf\NormalMapping\Shaders\normalFragmentShader.glsl" />
+    <None Include="SecondHalf\HDR\Shaders\lightingVertexShader.glsl" />
+    <None Include="SecondHalf\HDR\Shaders\lightingFragmentShader.glsl" />
+    <None Include="SecondHalf\HDR\Shaders\hdrVertexShader.glsl" />
+    <None Include="SecondHalf\HDR\Shaders\hdrFragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SecondHalf\Blending\Shaders\discardFragmentShader.glsl" />
