@@ -32,6 +32,7 @@
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="SecondHalf\Blending\main.cpp" />
+    <ClCompile Include="SecondHalf\Bloom\main.cpp" />
     <ClCompile Include="SecondHalf\CubeMaps\main.cpp" />
     <ClCompile Include="SecondHalf\DepthAndStencilTesting\main.cpp" />
     <ClCompile Include="SecondHalf\FaceCulling\main.cpp" />
@@ -92,6 +93,13 @@
     <None Include="FirstHalf\Transformations\vertexShader.glsl" />
     <None Include="SecondHalf\Blending\Shaders\blendFragmentShader.glsl" />
     <None Include="SecondHalf\Blending\Shaders\vertexShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\blurFragmentShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\blurVertexShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\finalFragmentShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\finalVertexShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\lightsFragmentShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\normalFragmentShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\normalVertexShader.glsl" />
     <None Include="SecondHalf\CubeMaps\Shaders\fragmentShader.glsl" />
     <None Include="SecondHalf\CubeMaps\Shaders\reflectAndRefractVertexShader.glsl" />
     <None Include="SecondHalf\CubeMaps\Shaders\reflectFragmentShader.glsl" />

@@ -102,6 +102,9 @@
     <ClCompile Include="SecondHalf\HDR\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SecondHalf\Bloom\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.hpp">
@@ -195,6 +198,13 @@
     <None Include="SecondHalf\HDR\Shaders\lightingFragmentShader.glsl" />
     <None Include="SecondHalf\HDR\Shaders\hdrVertexShader.glsl" />
     <None Include="SecondHalf\HDR\Shaders\hdrFragmentShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\normalVertexShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\normalFragmentShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\lightsFragmentShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\blurVertexShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\blurFragmentShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\finalVertexShader.glsl" />
+    <None Include="SecondHalf\Bloom\Shaders\finalFragmentShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SecondHalf\Blending\Shaders\discardFragmentShader.glsl" />
