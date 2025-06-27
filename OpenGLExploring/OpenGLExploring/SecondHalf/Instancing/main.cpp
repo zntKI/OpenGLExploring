@@ -34,13 +34,13 @@ int main()
 #pragma region SetUp
 
 	GLFWwindow* window;
-
+	
 	/* Initialize the library */
 	if ( !glfwInit() )
 		return -1;
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow( windowWidth, windowHeight, "Hello World", NULL, NULL );
+	window = glfwCreateWindow( windowWidth, windowHeight, "Instancing", NULL, NULL );
 	if ( !window ) {
 		glfwTerminate();
 		return -1;

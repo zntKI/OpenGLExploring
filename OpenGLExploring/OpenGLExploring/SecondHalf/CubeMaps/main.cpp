@@ -42,7 +42,7 @@ int main()
 		return -1;
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow( windowWidth, windowHeight, "Hello World", NULL, NULL );
+	window = glfwCreateWindow( windowWidth, windowHeight, "Cubemaps", NULL, NULL );
 	if ( !window ) {
 		glfwTerminate();
 		return -1;

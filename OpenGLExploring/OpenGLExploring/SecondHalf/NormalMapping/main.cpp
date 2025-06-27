@@ -39,7 +39,7 @@ int main( void )
 		return -1;
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow( windowWidth, windowHeight, "Hello", NULL, NULL );
+	window = glfwCreateWindow( windowWidth, windowHeight, "Normal mapping", NULL, NULL );
 	if ( !window )
 	{
 		glfwTerminate();
